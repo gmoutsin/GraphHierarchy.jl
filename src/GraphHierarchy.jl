@@ -60,7 +60,7 @@ function graphHierarchicalCoefficients(hstruc::Tuple{Array{T1,1},Array{T1,1},Spa
 end
 
 
-export graphHierarchcalStructure
+export graphHierarchicalStructure
 
 export graphHierarchicalCoefficients
 
