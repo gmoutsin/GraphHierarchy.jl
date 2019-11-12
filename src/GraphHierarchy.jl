@@ -49,14 +49,14 @@ function graphHierarchicalCoefficients(diffs::SparseMatrixCSC{T1,T2} where T1 <:
     diffarray = [diffs[p] for p in findall(!iszero, diffs)]
     av = mean(diffarray)
     stdev = std(diffarray, mean=av)
-    return (av, stdev)
+    return (1 - av, stdev)
 end
 
 function graphHierarchicalCoefficients(hstruc::Tuple{Array{T1,1},Array{T1,1},SparseMatrixCSC{T1,T2}} where T1 <: AbstractFloat where T2 <: Int)
     diffarray = [hstruc[3][p] for p in findall(!iszero, hstruc[3])]
     av = mean(diffarray)
     stdev = std(diffarray, mean=av)
-    return (av, stdev)
+    return (1 - av, stdev)
 end
 
 
