@@ -95,4 +95,41 @@ using Test
     @test norm(spdata[3]) < 1.0e-11
     @test abs(coeffs[1]-1.0) < 1.0e-11
     @test abs(coeffs[2]-0.0) < 1.0e-11
+
+    g = DiGraph(4)
+    add_edge!(g,1,2)
+    add_edge!(g,1,3)
+    add_edge!(g,1,4)
+    add_edge!(g,2,3)
+    add_edge!(g,3,4)
+    add_edge!(g,4,1)
+    HS = graphHierarchicalStructure(g)
+    spdata = findnz(HS[3])
+    coeffs = graphHierarchicalCoefficients(HS)
+    @test norm(HS[1] - [-(5.0/8.0), -(1.0/8.0), 3.0/8.0, 3.0/8.0]) < 1.0e-15
+    @test norm(HS[2] - [2.0,0.5,0.25,0.5]) < 1.0e-15
+    @test norm(spdata[1] - [4,1,1,2,1,3]) < 1.0e-15
+    @test norm(spdata[2] - [1,2,3,3,4,4]) < 1.0e-15
+    @test norm(spdata[3] -[-1.0,0.5,1.0,0.5,1.0,0.0]) < 1.0e-15
+    @test abs(coeffs[1] - 2.0/3.0) < 1.0e-15
+    @test abs(coeffs[2] - 0.7527726527090812) < 1.0e-15
+
+    g = Graph(6)
+    add_edge!(g,1,2)
+    add_edge!(g,2,3)
+    add_edge!(g,3,4)
+    add_edge!(g,4,5)
+    add_edge!(g,5,6)
+    add_edge!(g,2,4)
+    add_edge!(g,3,5)
+    HS = graphHierarchicalStructure(g)
+    spdata = findnz(HS[3])
+    coeffs = graphHierarchicalCoefficients(HS)
+    @test norm(HS[1] - [-1.0, 1.0/3.0, 2.0/3.0, 2.0/3.0, 1.0/3.0, -1.0]) < 1.0e-15
+    @test norm(HS[2] - [7.0/3.0, 7.0/9.0, 7.0/9.0, 7.0/9.0, 7.0/9.0, 7.0/3.0]) < 1.0e-15
+    @test norm(spdata[1] - [2,1,3,4,2,4,5,2,3,5,3,4,6,5]) < 1.0e-15
+    @test norm(spdata[2] - [1,2,2,2,3,3,3,4,4,4,5,5,5,6]) < 1.0e-15
+    @test norm(spdata[3] -[-4.0/3.0,4.0/3.0,-1.0/3.0,-1.0/3.0,1.0/3.0,0.0,1.0/3.0,1.0/3.0,0.0,1.0/3.0,-1.0/3.0,-1.0/3.0,4.0/3.0,-4.0/3.0]) < 1.0e-15
+    @test abs(coeffs[1] - 1.0) < 1.0e-15
+    @test abs(coeffs[2] - 0.7844645405527362) < 1.0e-15
 end
