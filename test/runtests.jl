@@ -19,8 +19,18 @@ using Test
     @test norm(spdata[1] - [1,2,3,4,5]) < 1.0e-15
     @test norm(spdata[2] - [2,3,4,5,6]) < 1.0e-15
     @test norm(spdata[3]- [1.0,1.0,1.0,1.0,1.0]) < 1.0e-15
-    @test abs(coeffs[1]-0.0) < 1.0e-15
-    @test abs(coeffs[2]-0.0) < 1.0e-15
+    @test abs(coeffs[1]) < 1.0e-15
+    @test abs(coeffs[2]) < 1.0e-15
+    HSA = graphHierarchicalStructure(adjacency_matrix(g))
+    spdataA = findnz(HSA[3])
+    coeffsA = graphHierarchicalCoefficients(HSA)
+    @test norm(HSA[1] - HS[1]) < 1.0e-15
+    @test norm(HSA[2] - HS[2]) < 1.0e-15
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-15
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-15
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-15
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-15
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-15
 
     g = DiGraph(11)
     add_edge!(g,1,3)
@@ -51,6 +61,16 @@ using Test
     @test norm(spdata[3] - [1.0 for i in 1:length(spdata[3])]) < 1.0e-15
     @test abs(coeffs[1]-0.0) < 1.0e-15
     @test abs(coeffs[2]-0.0) < 1.0e-15
+    HSA = graphHierarchicalStructure(adjacency_matrix(g))
+    spdataA = findnz(HSA[3])
+    coeffsA = graphHierarchicalCoefficients(HSA)
+    @test norm(HSA[1] - HS[1]) < 1.0e-15
+    @test norm(HSA[2] - HS[2]) < 1.0e-15
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-15
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-15
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-15
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-15
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-15
 
     g = DiGraph(10)
     add_edge!(g,1,2)
@@ -77,6 +97,16 @@ using Test
     @test norm(spdata[3] - [0,0,0,5.142857142856755,-3.142857142857543,3.7142857142851042,-1.7142857142866688,0.28571428571512214,1.7142857142866688,1,1,1,1.1428571428571175,0.8571428571429118]) < 1.0e-11
     @test abs(coeffs[1]-3.0/14.0) < 1.0e-11
     @test abs(coeffs[2]-2.0092017518778356) < 1.0e-11
+    HSA = graphHierarchicalStructure(adjacency_matrix(g))
+    spdataA = findnz(HSA[3])
+    coeffsA = graphHierarchicalCoefficients(HSA)
+    @test norm(HSA[1] - HS[1]) < 1.0e-11
+    @test norm(HSA[2] - HS[2]) < 1.0e-11
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-15
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-15
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-11
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-11
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-11
 
     g = DiGraph(6)
     add_edge!(g,1,2)
@@ -95,6 +125,16 @@ using Test
     @test norm(spdata[3]) < 1.0e-11
     @test abs(coeffs[1]-1.0) < 1.0e-11
     @test abs(coeffs[2]-0.0) < 1.0e-11
+    HSA = graphHierarchicalStructure(adjacency_matrix(g))
+    spdataA = findnz(HSA[3])
+    coeffsA = graphHierarchicalCoefficients(HSA)
+    @test norm(HSA[1] - HS[1]) < 1.0e-11
+    @test norm(HSA[2] - HS[2]) < 1.0e-11
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-15
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-15
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-11
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-11
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-11
 
     g = DiGraph(4)
     add_edge!(g,1,2)
@@ -113,6 +153,16 @@ using Test
     @test norm(spdata[3] -[-1.0,0.5,1.0,0.5,1.0,0.0]) < 1.0e-15
     @test abs(coeffs[1] - 2.0/3.0) < 1.0e-15
     @test abs(coeffs[2] - 0.7527726527090812) < 1.0e-15
+    HSA = graphHierarchicalStructure(adjacency_matrix(g))
+    spdataA = findnz(HSA[3])
+    coeffsA = graphHierarchicalCoefficients(HSA)
+    @test norm(HSA[1] - HS[1]) < 1.0e-15
+    @test norm(HSA[2] - HS[2]) < 1.0e-15
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-15
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-15
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-15
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-15
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-15
 
     g = Graph(6)
     add_edge!(g,1,2)
@@ -132,4 +182,14 @@ using Test
     @test norm(spdata[3] -[-4.0/3.0,4.0/3.0,-1.0/3.0,-1.0/3.0,1.0/3.0,0.0,1.0/3.0,1.0/3.0,0.0,1.0/3.0,-1.0/3.0,-1.0/3.0,4.0/3.0,-4.0/3.0]) < 1.0e-15
     @test abs(coeffs[1] - 1.0) < 1.0e-15
     @test abs(coeffs[2] - 0.7844645405527362) < 1.0e-15
+    HSA = graphHierarchicalStructure(adjacency_matrix(g))
+    spdataA = findnz(HSA[3])
+    coeffsA = graphHierarchicalCoefficients(HSA)
+    @test norm(HSA[1] - HS[1]) < 1.0e-15
+    @test norm(HSA[2] - HS[2]) < 1.0e-15
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-15
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-15
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-15
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-15
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-15
 end
