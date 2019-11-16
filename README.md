@@ -6,7 +6,7 @@ This package computes the Hierarchical structure of a graph, which was introduce
 
 The module exports two functions `graphHierarchicalStructure` and `graphHierarchicalCoefficients`.
 
-The function `graphHierarchicalStructure` takes a simple graph, a simple digraph or a sparse matrix as an argument and an optional boolean argument If the boolean value is set to `true`, then the result is given as `BigFloat`. The function has the following has 3 signatures:
+The function `graphHierarchicalStructure` takes a `LightGraphs.jl` graph, a `LightGraphs.jl` digraph or a sparse matrix as an argument and an optional boolean argument If the boolean value is set to `true`, then the result is given as `BigFloat`. The function has the following has 3 signatures:
 
 `function graphHierarchicalStructure(g::SimpleDiGraph{T} where T <: Int, big::Bool=false)`
 
