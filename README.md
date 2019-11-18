@@ -16,7 +16,7 @@ The function `graphHierarchicalStructure` takes a `LightGraphs.jl` graph, a `Lig
 
 It returns the `(HL,IC,HD)` where `HL` is the vector of the hierarchical levels of the vertices, `IC` is the vector of the influence centralities of the vertices and `HD` is a sparse matrix with the hierarchical differences of each edge.
 
-The function `graphHierarchicalCoefficients` takes as an argument the tuple `(HL,IC,HD)` or just `HD` and returns `(dc,lc)` where `dc` is the democracy coefficient and `lc` the layering coefficient of the graph.
+The function `graphHierarchicalCoefficients` takes as an argument the tuple `(HL,IC,HD)` or just `HD` and returns `(dc,hi)` where `dc` is the democracy coefficient and `hi` the hierarchical incoherence parameter of the graph.
 
 
 
