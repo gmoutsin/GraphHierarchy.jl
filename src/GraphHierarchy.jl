@@ -25,8 +25,8 @@ function calculationAssumingTransposedMatrixBig(A::SparseMatrixCSC{T1,T2} where 
     M = spdiagm(0 => d)-A
     dropzeros!(M)
     (x, y, v) = findnz(M)
-    v = [BigFloat(i) for i in v]
-    Mb = sparse(x, y, v, length(d), length(d))
+    vb = [BigFloat(i) for i in v]
+    Mb = sparse(x, y, vb, length(d), length(d))
     HLs = lsqr(Mb,db)
     pos = findall(!iszero,A)
     HDs = sparse([p[2] for p in pos], [p[1] for p in pos], [HLs[p[1]] - HLs[p[2]] for p in pos], length(d), length(d))
