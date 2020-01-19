@@ -36,8 +36,8 @@ function calculatingStructureAssumingTransposedMatrixBig(A::SparseMatrixCSC{T1,T
         end
     end
     HLs = lsqr(M,d)
-    HDs = sparse(x, y, [ HLs[x[i]] - HLs[y[i]] for i in 1:length(x) ], length(d), length(d) )
-    ICs = [d[i] > 0 ? BigFloat(1) - sum(HDs[i,:])/d[i] : BigFloat(1) for i in 1:length(d)]
+    HDs = sparse(y, x, [ HLs[x[i]] - HLs[y[i]] for i in 1:length(x) ], length(d), length(d) )
+    ICs = [d[i] > 0 ? BigFloat(1) - sum(HDs[:,i])/d[i] : BigFloat(1) for i in 1:length(d)]
     return (HLs, ICs, HDs )
 end
 
@@ -47,10 +47,10 @@ function calculatingStructureAssumingTransposedWeightedMatrix(A::SparseMatrixCSC
     M = spdiagm(0 => d)-A
     dropzeros!(M)
     HLs = lsqr(M,d)
-    HDs = sparse(x, y, [ HLs[x[i]] - HLs[y[i]] for i in 1:length(x) ], length(d), length(d) )
+    HDs = sparse(y, x, [ HLs[x[i]] - HLs[y[i]] for i in 1:length(x) ], length(d), length(d) )
     HDsums = sum(HDs, dims=1)
-    ICs = [d[i] > 0 ? 1.0 - A[i,:]'*HDs[i,:]/d[i] : 1.0 for i in 1:length(d)]
-    return (HLs, ICs, sparse(transpose(HDs)) )
+    ICs = [d[i] > 0 ? 1.0 - A[i,:]'*HDs[:,i]/d[i] : 1.0 for i in 1:length(d)]
+    return (HLs, ICs, sparse(HDs) )
 end
 
 function calculatingStructureAssumingTransposedWeightedMatrixBig(A::SparseMatrixCSC{T1,T2} where T1 <: Number where T2 <: Int)
@@ -64,9 +64,9 @@ function calculatingStructureAssumingTransposedWeightedMatrixBig(A::SparseMatrix
         end
     end
     HLs = lsqr(M,d)
-    HDs = sparse(x, y, [ HLs[x[i]] - HLs[y[i]] for i in 1:length(x) ], length(d), length(d) )
+    HDs = sparse(y, x, [ HLs[x[i]] - HLs[y[i]] for i in 1:length(x) ], length(d), length(d) )
     HDsums = sum(HDs, dims=1)
-    ICs = [d[i] > 0 ? BigFloat(1) - A[i,:]'*HDs[i,:]/d[i] : BigFloat(1) for i in 1:length(d)]
+    ICs = [d[i] > 0 ? BigFloat(1) - A[i,:]'*HDs[:,i]/d[i] : BigFloat(1) for i in 1:length(d)]
     return (HLs, ICs, HDs )
 end
 
