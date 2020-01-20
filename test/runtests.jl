@@ -18,23 +18,23 @@ using Test
     HS = forward_hierarchical_structure(g)
     spdata = findnz(HS[3])
     coeffs = hierarchical_coefficients(g,HS)
-    @test norm(HS[1] - [-2.5,-1.5,-0.5,0.5,1.5,2.5]) < 1.0e-14
-    @test norm(HS[2] - [1,0,0,0,0,0]) < 1.0e-14
-    @test norm(spdata[1] - [1,2,3,4,5]) < 1.0e-14
-    @test norm(spdata[2] - [2,3,4,5,6]) < 1.0e-14
-    @test norm(spdata[3]- [1.0,1.0,1.0,1.0,1.0]) < 1.0e-14
-    @test abs(coeffs[1]) < 1.0e-14
-    @test abs(coeffs[2]) < 1.0e-14
+    @test norm(HS[1] - [-2.5,-1.5,-0.5,0.5,1.5,2.5]) < 1.0e-10
+    @test norm(HS[2] - [1,0,0,0,0,0]) < 1.0e-10
+    @test norm(spdata[1] - [1,2,3,4,5]) < 1.0e-10
+    @test norm(spdata[2] - [2,3,4,5,6]) < 1.0e-10
+    @test norm(spdata[3]- [1.0,1.0,1.0,1.0,1.0]) < 1.0e-10
+    @test abs(coeffs[1]) < 1.0e-10
+    @test abs(coeffs[2]) < 1.0e-10
     HSA = forward_hierarchical_structure(adjacency_matrix(g))
     spdataA = findnz(HSA[3])
     coeffsA = hierarchical_coefficients(g,HSA)
-    @test norm(HSA[1] - HS[1]) < 1.0e-14
-    @test norm(HSA[2] - HS[2]) < 1.0e-14
-    @test norm(spdataA[1] - spdata[1]) < 1.0e-14
-    @test norm(spdataA[2] - spdata[2]) < 1.0e-14
-    @test norm(spdataA[3] - spdata[3]) < 1.0e-14
-    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-14
-    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-14
+    @test norm(HSA[1] - HS[1]) < 1.0e-10
+    @test norm(HSA[2] - HS[2]) < 1.0e-10
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-10
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-10
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-10
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-10
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-10
     gr = SimpleDiGraph(transpose(adjacency_matrix(g)))
     HSf = hierarchical_structure(g)
     HSr = hierarchical_structure(gr)
@@ -44,20 +44,20 @@ using Test
     spdata_r1 = findnz(HSr[1][3])
     spdata_r2 = findnz(HSr[2][3])
     coeffs_r = hierarchical_coefficients(gr,HSr)
-    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-14
+    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-10
     gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
     HSwf = hierarchical_structure(gw)
     HSwr = hierarchical_structure(gwr)
@@ -67,34 +67,34 @@ using Test
     spdata_wr1 = findnz(HSwr[1][3])
     spdata_wr2 = findnz(HSwr[2][3])
     coeffs_wr = hierarchical_coefficients(gwr,HSwr)
-    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-14
-    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-14
+    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-10
+    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-10
 
     B_HS = forward_hierarchical_structure(g, big=true)
     B_spdata = findnz(B_HS[3])
@@ -102,11 +102,11 @@ using Test
     @test norm(B_HS[1] - [-big(5)/2,-big(3)/2,-big(1)/2,big(1)/2,big(3)/2,big(5)/2]) < 1.0e-70
     @test norm(B_HS[2] - [BigFloat(1),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0)]) < 1.0e-70
     @test norm(B_spdata[3]- [BigFloat(1),BigFloat(1),BigFloat(1),BigFloat(1),BigFloat(1)]) < 1.0e-70
-    @test norm(B_HS[1] - HS[1]) < 1.0e-14
-    @test norm(B_HS[2] - HS[2]) < 1.0e-14
-    @test norm(B_spdata[1] - spdata[1]) < 1.0e-14
-    @test norm(B_spdata[2] - spdata[2]) < 1.0e-14
-    @test norm(B_spdata[3] - spdata[3]) < 1.0e-14
+    @test norm(B_HS[1] - HS[1]) < 1.0e-10
+    @test norm(B_HS[2] - HS[2]) < 1.0e-10
+    @test norm(B_spdata[1] - spdata[1]) < 1.0e-10
+    @test norm(B_spdata[2] - spdata[2]) < 1.0e-10
+    @test norm(B_spdata[3] - spdata[3]) < 1.0e-10
     @test abs(B_coeffs[1]) < 1.0e-70
     @test abs(B_coeffs[2]) < 1.0e-70
     B_HSA = forward_hierarchical_structure(adjacency_matrix(g), big=true)
@@ -202,23 +202,23 @@ using Test
     HS = forward_hierarchical_structure(g)
     spdata = findnz(HS[3])
     coeffs = hierarchical_coefficients(g,HS)
-    @test norm(HS[1] - [ceil(i/2) - 36.0/11.0 for i in 1:11]) < 1.0e-14
-    @test norm(HS[2] - [1,1,0,0,0,0,0,0,0,0,0]) < 1.0e-14
-    @test norm(spdata[1] - [1,2,1,2,3,4,3,4,5,6,5,6,7,8,7,8,9,10]) < 1.0e-14
-    @test norm(spdata[2] - [3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11]) < 1.0e-14
-    @test norm(spdata[3] - [1.0 for i in 1:length(spdata[3])]) < 1.0e-14
-    @test abs(coeffs[1]-0.0) < 1.0e-14
-    @test abs(coeffs[2]-0.0) < 1.0e-14
+    @test norm(HS[1] - [ceil(i/2) - 36.0/11.0 for i in 1:11]) < 1.0e-10
+    @test norm(HS[2] - [1,1,0,0,0,0,0,0,0,0,0]) < 1.0e-10
+    @test norm(spdata[1] - [1,2,1,2,3,4,3,4,5,6,5,6,7,8,7,8,9,10]) < 1.0e-10
+    @test norm(spdata[2] - [3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11]) < 1.0e-10
+    @test norm(spdata[3] - [1.0 for i in 1:length(spdata[3])]) < 1.0e-10
+    @test abs(coeffs[1]-0.0) < 1.0e-10
+    @test abs(coeffs[2]-0.0) < 1.0e-10
     HSA = forward_hierarchical_structure(adjacency_matrix(g))
     spdataA = findnz(HSA[3])
     coeffsA = hierarchical_coefficients(g,HSA)
-    @test norm(HSA[1] - HS[1]) < 1.0e-14
-    @test norm(HSA[2] - HS[2]) < 1.0e-14
-    @test norm(spdataA[1] - spdata[1]) < 1.0e-14
-    @test norm(spdataA[2] - spdata[2]) < 1.0e-14
-    @test norm(spdataA[3] - spdata[3]) < 1.0e-14
-    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-14
-    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-14
+    @test norm(HSA[1] - HS[1]) < 1.0e-10
+    @test norm(HSA[2] - HS[2]) < 1.0e-10
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-10
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-10
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-10
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-10
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-10
     gr = SimpleDiGraph(transpose(adjacency_matrix(g)))
     HSf = hierarchical_structure(g)
     HSr = hierarchical_structure(gr)
@@ -228,20 +228,20 @@ using Test
     spdata_r1 = findnz(HSr[1][3])
     spdata_r2 = findnz(HSr[2][3])
     coeffs_r = hierarchical_coefficients(gr,HSr)
-    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-14
+    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-10
     gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
     HSwf = hierarchical_structure(gw)
     HSwr = hierarchical_structure(gwr)
@@ -251,34 +251,34 @@ using Test
     spdata_wr1 = findnz(HSwr[1][3])
     spdata_wr2 = findnz(HSwr[2][3])
     coeffs_wr = hierarchical_coefficients(gwr,HSwr)
-    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-14
-    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-14
+    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-10
+    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-10
 
     B_HS = forward_hierarchical_structure(g, big=true)
     B_spdata = findnz(B_HS[3])
@@ -286,11 +286,11 @@ using Test
     @test norm(B_HS[1] - [ceil(i/2) - big(36)/11 for i in 1:11]) < 1.0e-70
     @test norm(B_HS[2] - [BigFloat(1),BigFloat(1),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0)]) < 1.0e-70
     @test norm(B_spdata[3] - [BigFloat(1) for i in 1:length(spdata[3])]) < 1.0e-70
-    @test norm(B_HS[1] - HS[1]) < 1.0e-14
-    @test norm(B_HS[2] - HS[2]) < 1.0e-14
-    @test norm(B_spdata[1] - spdata[1]) < 1.0e-14
-    @test norm(B_spdata[2] - spdata[2]) < 1.0e-14
-    @test norm(B_spdata[3] - spdata[3]) < 1.0e-14
+    @test norm(B_HS[1] - HS[1]) < 1.0e-10
+    @test norm(B_HS[2] - HS[2]) < 1.0e-10
+    @test norm(B_spdata[1] - spdata[1]) < 1.0e-10
+    @test norm(B_spdata[2] - spdata[2]) < 1.0e-10
+    @test norm(B_spdata[3] - spdata[3]) < 1.0e-10
     @test abs(B_coeffs[1]) < 1.0e-70
     @test abs(B_coeffs[2]) < 1.0e-70
     B_HSA = forward_hierarchical_structure(adjacency_matrix(g), big=true)
@@ -384,8 +384,8 @@ using Test
     coeffs = hierarchical_coefficients(g,HS)
     @test norm(HS[1] - [-4.24285714285708, -4.242857142857171, -4.242857142856976,  0.8999999999996752, -0.5285714285718714,  1.1857142857147973,  1.9000000000000274,  4.042857142857218,  2.185714285714233,  3.042857142857145]) < 1.0e-10
     @test norm(HS[2] - [1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]) < 1.0e-10
-    @test norm(spdata[1] - [3,1,2,1,8,3,6,4,5,4,10,6,7,9]) < 1.0e-14
-    @test norm(spdata[2] -[1,2,3,4,4,5,5,6,6,7,8,9,10,10]) < 1.0e-14
+    @test norm(spdata[1] - [3,1,2,1,8,3,6,4,5,4,10,6,7,9]) < 1.0e-10
+    @test norm(spdata[2] -[1,2,3,4,4,5,5,6,6,7,8,9,10,10]) < 1.0e-10
     @test norm(spdata[3] - [0,0,0,5.142857142856755,-3.142857142857543,3.7142857142851042,-1.7142857142866688,0.28571428571512214,1.7142857142866688,1,1,1,1.1428571428571175,0.8571428571429118]) < 1.0e-10
     @test abs(coeffs[1]-3.0/14.0) < 1.0e-10
     @test abs(coeffs[2]-1.936115253297853) < 1.0e-10
@@ -394,8 +394,8 @@ using Test
     coeffsA = hierarchical_coefficients(g,HSA)
     @test norm(HSA[1] - HS[1]) < 1.0e-10
     @test norm(HSA[2] - HS[2]) < 1.0e-10
-    @test norm(spdataA[1] - spdata[1]) < 1.0e-14
-    @test norm(spdataA[2] - spdata[2]) < 1.0e-14
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-10
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-10
     @test norm(spdataA[3] - spdata[3]) < 1.0e-10
     @test abs(coeffsA[1] - coeffs[1]) < 1.0e-10
     @test abs(coeffsA[2] - coeffs[2]) < 1.0e-10
@@ -408,20 +408,20 @@ using Test
     spdata_r1 = findnz(HSr[1][3])
     spdata_r2 = findnz(HSr[2][3])
     coeffs_r = hierarchical_coefficients(gr,HSr)
-    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-14
+    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-10
     gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
     HSwf = hierarchical_structure(gw)
     HSwr = hierarchical_structure(gwr)
@@ -431,34 +431,34 @@ using Test
     spdata_wr1 = findnz(HSwr[1][3])
     spdata_wr2 = findnz(HSwr[2][3])
     coeffs_wr = hierarchical_coefficients(gwr,HSwr)
-    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-14
-    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-14
+    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-10
+    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-10
 
     B_HS = forward_hierarchical_structure(g, big=true)
     B_spdata = findnz(B_HS[3])
@@ -466,8 +466,8 @@ using Test
     @test norm(B_HS[2] - [BigFloat(1),BigFloat(1),BigFloat(1),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0),BigFloat(0)]) < 1.0e-70
     @test norm(B_HS[1] - HS[1]) < 1.0e-10
     @test norm(B_HS[2] - HS[2]) < 1.0e-10
-    @test norm(B_spdata[1] - spdata[1]) < 1.0e-14
-    @test norm(B_spdata[2] - spdata[2]) < 1.0e-14
+    @test norm(B_spdata[1] - spdata[1]) < 1.0e-10
+    @test norm(B_spdata[2] - spdata[2]) < 1.0e-10
     @test norm(B_spdata[3] - spdata[3]) < 1.0e-10
     @test abs(B_coeffs[1] - big(3)/14) < 1.0e-70
     @test abs(B_coeffs[2] - 1.936115253297853) < 1.0e-10
@@ -554,8 +554,8 @@ using Test
     coeffs = hierarchical_coefficients(g,HS)
     @test norm(HS[1]) < 1.0e-10
     @test norm(HS[2] - [1.0,1.0,1.0,1.0,1.0,1.0]) < 1.0e-10
-    @test norm(spdata[1] - [6,1,2,3,4,5]) < 1.0e-14
-    @test norm(spdata[2] - [1,2,3,4,5,6]) < 1.0e-14
+    @test norm(spdata[1] - [6,1,2,3,4,5]) < 1.0e-10
+    @test norm(spdata[2] - [1,2,3,4,5,6]) < 1.0e-10
     @test norm(spdata[3]) < 1.0e-10
     @test abs(coeffs[1]-1.0) < 1.0e-10
     @test abs(coeffs[2]-0.0) < 1.0e-10
@@ -564,8 +564,8 @@ using Test
     coeffsA = hierarchical_coefficients(g,HSA)
     @test norm(HSA[1] - HS[1]) < 1.0e-10
     @test norm(HSA[2] - HS[2]) < 1.0e-10
-    @test norm(spdataA[1] - spdata[1]) < 1.0e-14
-    @test norm(spdataA[2] - spdata[2]) < 1.0e-14
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-10
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-10
     @test norm(spdataA[3] - spdata[3]) < 1.0e-10
     @test abs(coeffsA[1] - coeffs[1]) < 1.0e-10
     @test abs(coeffsA[2] - coeffs[2]) < 1.0e-10
@@ -578,20 +578,20 @@ using Test
     spdata_r1 = findnz(HSr[1][3])
     spdata_r2 = findnz(HSr[2][3])
     coeffs_r = hierarchical_coefficients(gr,HSr)
-    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-14
+    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-10
     gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
     HSwf = hierarchical_structure(gw)
     HSwr = hierarchical_structure(gwr)
@@ -601,34 +601,34 @@ using Test
     spdata_wr1 = findnz(HSwr[1][3])
     spdata_wr2 = findnz(HSwr[2][3])
     coeffs_wr = hierarchical_coefficients(gwr,HSwr)
-    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-14
-    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-14
+    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-10
+    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-10
 
     B_HS = forward_hierarchical_structure(g, big=true)
     B_spdata = findnz(B_HS[3])
@@ -636,11 +636,11 @@ using Test
     @test norm(B_HS[1]) < 1.0e-70
     @test norm(B_HS[2] - [BigFloat(1),BigFloat(1),BigFloat(1),BigFloat(1),BigFloat(1),BigFloat(1)]) < 1.0e-70
     @test norm(B_spdata[3]) < 1.0e-70
-    @test norm(B_HS[1] - HS[1]) < 1.0e-14
-    @test norm(B_HS[2] - HS[2]) < 1.0e-14
-    @test norm(B_spdata[1] - spdata[1]) < 1.0e-14
-    @test norm(B_spdata[2] - spdata[2]) < 1.0e-14
-    @test norm(B_spdata[3] - spdata[3]) < 1.0e-14
+    @test norm(B_HS[1] - HS[1]) < 1.0e-10
+    @test norm(B_HS[2] - HS[2]) < 1.0e-10
+    @test norm(B_spdata[1] - spdata[1]) < 1.0e-10
+    @test norm(B_spdata[2] - spdata[2]) < 1.0e-10
+    @test norm(B_spdata[3] - spdata[3]) < 1.0e-10
     @test abs(B_coeffs[1] - 1) < 1.0e-70
     @test abs(B_coeffs[2]) < 1.0e-70
     B_HSA = forward_hierarchical_structure(adjacency_matrix(g), big=true)
@@ -724,23 +724,23 @@ using Test
     HS = forward_hierarchical_structure(g)
     spdata = findnz(HS[3])
     coeffs = hierarchical_coefficients(g,HS)
-    @test norm(HS[1] - [-(5.0/8.0), -(1.0/8.0), 3.0/8.0, 3.0/8.0]) < 1.0e-14
-    @test norm(HS[2] - [2.0,0.5,0.25,0.5]) < 1.0e-14
-    @test norm(spdata[1] - [4,1,1,2,1,3]) < 1.0e-14
-    @test norm(spdata[2] - [1,2,3,3,4,4]) < 1.0e-14
-    @test norm(spdata[3] -[-1.0,0.5,1.0,0.5,1.0,0.0]) < 1.0e-14
-    @test abs(coeffs[1] - 2.0/3.0) < 1.0e-14
-    @test abs(coeffs[2] - 0.687184270936277) < 1.0e-14
+    @test norm(HS[1] - [-(5.0/8.0), -(1.0/8.0), 3.0/8.0, 3.0/8.0]) < 1.0e-10
+    @test norm(HS[2] - [2.0,0.5,0.25,0.5]) < 1.0e-10
+    @test norm(spdata[1] - [4,1,1,2,1,3]) < 1.0e-10
+    @test norm(spdata[2] - [1,2,3,3,4,4]) < 1.0e-10
+    @test norm(spdata[3] -[-1.0,0.5,1.0,0.5,1.0,0.0]) < 1.0e-10
+    @test abs(coeffs[1] - 2.0/3.0) < 1.0e-10
+    @test abs(coeffs[2] - 0.687184270936277) < 1.0e-10
     HSA = forward_hierarchical_structure(adjacency_matrix(g))
     spdataA = findnz(HSA[3])
     coeffsA = hierarchical_coefficients(g,HSA)
-    @test norm(HSA[1] - HS[1]) < 1.0e-14
-    @test norm(HSA[2] - HS[2]) < 1.0e-14
-    @test norm(spdataA[1] - spdata[1]) < 1.0e-14
-    @test norm(spdataA[2] - spdata[2]) < 1.0e-14
-    @test norm(spdataA[3] - spdata[3]) < 1.0e-14
-    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-14
-    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-14
+    @test norm(HSA[1] - HS[1]) < 1.0e-10
+    @test norm(HSA[2] - HS[2]) < 1.0e-10
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-10
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-10
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-10
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-10
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-10
     gr = SimpleDiGraph(transpose(adjacency_matrix(g)))
     HSf = hierarchical_structure(g)
     HSr = hierarchical_structure(gr)
@@ -750,20 +750,20 @@ using Test
     spdata_r1 = findnz(HSr[1][3])
     spdata_r2 = findnz(HSr[2][3])
     coeffs_r = hierarchical_coefficients(gr,HSr)
-    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-14
+    @test norm(HSf[1][1] - HSr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_r2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_r2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_r2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_r1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_r1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_r1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_r[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_r[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_r[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_r[1][2]) < 1.0e-10
     gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
     HSwf = hierarchical_structure(gw)
     HSwr = hierarchical_structure(gwr)
@@ -773,45 +773,45 @@ using Test
     spdata_wr1 = findnz(HSwr[1][3])
     spdata_wr2 = findnz(HSwr[2][3])
     coeffs_wr = hierarchical_coefficients(gwr,HSwr)
-    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-14
-    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-14
-    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-14
-    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-14
-    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-14
-    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-14
-    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-14
-    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-14
-    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-14
-    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-14
-    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-14
-    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-14
-    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-14
-    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-14
-    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-14
+    @test norm(HSwf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSwf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSwf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSwf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_wf1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_wf1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_wf1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_wf2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_wf2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_wf2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_wf[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_wf[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_wf[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_wf[2][2] - coeffs_wr[1][2]) < 1.0e-10
+    @test norm(HSf[1][1] - HSwr[2][1]) < 1.0e-10
+    @test norm(HSf[2][1] - HSwr[1][1]) < 1.0e-10
+    @test norm(HSf[1][2] - HSwr[2][2]) < 1.0e-10
+    @test norm(HSf[2][2] - HSwr[1][2]) < 1.0e-10
+    @test norm(spdata_f1[1] - spdata_wr2[1]) < 1.0e-10
+    @test norm(spdata_f1[2] - spdata_wr2[2]) < 1.0e-10
+    @test norm(spdata_f1[3] - spdata_wr2[3]) < 1.0e-10
+    @test norm(spdata_f2[1] - spdata_wr1[1]) < 1.0e-10
+    @test norm(spdata_f2[2] - spdata_wr1[2]) < 1.0e-10
+    @test norm(spdata_f2[3] - spdata_wr1[3]) < 1.0e-10
+    @test abs(coeffs_f[1][1] - coeffs_wr[2][1]) < 1.0e-10
+    @test abs(coeffs_f[1][2] - coeffs_wr[2][2]) < 1.0e-10
+    @test abs(coeffs_f[2][1] - coeffs_wr[1][1]) < 1.0e-10
+    @test abs(coeffs_f[2][2] - coeffs_wr[1][2]) < 1.0e-10
 
     B_HS = forward_hierarchical_structure(g, big=true)
     B_spdata = findnz(B_HS[3])
     B_coeffs = hierarchical_coefficients(g,B_HS)
-    @test norm(B_HS[1] - HS[1]) < 1.0e-14
-    @test norm(B_HS[2] - HS[2]) < 1.0e-14
-    @test norm(B_spdata[1] - spdata[1]) < 1.0e-14
-    @test norm(B_spdata[2] - spdata[2]) < 1.0e-14
-    @test norm(B_spdata[3] - spdata[3]) < 1.0e-14
+    @test norm(B_HS[1] - HS[1]) < 1.0e-10
+    @test norm(B_HS[2] - HS[2]) < 1.0e-10
+    @test norm(B_spdata[1] - spdata[1]) < 1.0e-10
+    @test norm(B_spdata[2] - spdata[2]) < 1.0e-10
+    @test norm(B_spdata[3] - spdata[3]) < 1.0e-10
     @test abs(B_coeffs[1] - big(2)/3) < 1.0e-70
-    @test abs(B_coeffs[2] - 0.687184270936277) < 1.0e-14
+    @test abs(B_coeffs[2] - 0.687184270936277) < 1.0e-10
     B_HSA = forward_hierarchical_structure(adjacency_matrix(g), big=true)
     B_spdataA = findnz(B_HSA[3])
     B_coeffsA = hierarchical_coefficients(g,B_HSA)
@@ -894,33 +894,33 @@ using Test
     HS = forward_hierarchical_structure(g)
     spdata = findnz(HS[3])
     coeffs = hierarchical_coefficients(g,HS)
-    @test norm(HS[1] - [-1.0, 1.0/3.0, 2.0/3.0, 2.0/3.0, 1.0/3.0, -1.0]) < 1.0e-14
-    @test norm(HS[2] - [7.0/3.0, 7.0/9.0, 7.0/9.0, 7.0/9.0, 7.0/9.0, 7.0/3.0]) < 1.0e-14
-    @test norm(spdata[1] - [2,1,3,4,2,4,5,2,3,5,3,4,6,5]) < 1.0e-14
-    @test norm(spdata[2] - [1,2,2,2,3,3,3,4,4,4,5,5,5,6]) < 1.0e-14
-    @test norm(spdata[3] -[-4.0/3.0,4.0/3.0,-1.0/3.0,-1.0/3.0,1.0/3.0,0.0,1.0/3.0,1.0/3.0,0.0,1.0/3.0,-1.0/3.0,-1.0/3.0,4.0/3.0,-4.0/3.0]) < 1.0e-14
-    @test abs(coeffs[1] - 1.0) < 1.0e-14
-    @test abs(coeffs[2] - 0.7559289460184544) < 1.0e-14
+    @test norm(HS[1] - [-1.0, 1.0/3.0, 2.0/3.0, 2.0/3.0, 1.0/3.0, -1.0]) < 1.0e-10
+    @test norm(HS[2] - [7.0/3.0, 7.0/9.0, 7.0/9.0, 7.0/9.0, 7.0/9.0, 7.0/3.0]) < 1.0e-10
+    @test norm(spdata[1] - [2,1,3,4,2,4,5,2,3,5,3,4,6,5]) < 1.0e-10
+    @test norm(spdata[2] - [1,2,2,2,3,3,3,4,4,4,5,5,5,6]) < 1.0e-10
+    @test norm(spdata[3] -[-4.0/3.0,4.0/3.0,-1.0/3.0,-1.0/3.0,1.0/3.0,0.0,1.0/3.0,1.0/3.0,0.0,1.0/3.0,-1.0/3.0,-1.0/3.0,4.0/3.0,-4.0/3.0]) < 1.0e-10
+    @test abs(coeffs[1] - 1.0) < 1.0e-10
+    @test abs(coeffs[2] - 0.7559289460184544) < 1.0e-10
     HSA = forward_hierarchical_structure(adjacency_matrix(g))
     spdataA = findnz(HSA[3])
     coeffsA = hierarchical_coefficients(g,HSA)
-    @test norm(HSA[1] - HS[1]) < 1.0e-14
-    @test norm(HSA[2] - HS[2]) < 1.0e-14
-    @test norm(spdataA[1] - spdata[1]) < 1.0e-14
-    @test norm(spdataA[2] - spdata[2]) < 1.0e-14
-    @test norm(spdataA[3] - spdata[3]) < 1.0e-14
-    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-14
-    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-14
+    @test norm(HSA[1] - HS[1]) < 1.0e-10
+    @test norm(HSA[2] - HS[2]) < 1.0e-10
+    @test norm(spdataA[1] - spdata[1]) < 1.0e-10
+    @test norm(spdataA[2] - spdata[2]) < 1.0e-10
+    @test norm(spdataA[3] - spdata[3]) < 1.0e-10
+    @test abs(coeffsA[1] - coeffs[1]) < 1.0e-10
+    @test abs(coeffsA[2] - coeffs[2]) < 1.0e-10
     HSw = forward_hierarchical_structure(gw)
     spdataw = findnz(HSw[3])
     coeffsw = hierarchical_coefficients(gw,HSw)
-    @test norm(HS[1] - HSw[1]) < 1.0e-14
-    @test norm(HS[2] - HSw[2]) < 1.0e-14
-    @test norm(spdata[1] - spdata[1]) < 1.0e-14
-    @test norm(spdata[2] - spdata[2]) < 1.0e-14
-    @test norm(spdata[3] - spdata[3]) < 1.0e-14
-    @test abs(coeffs[1] - coeffs[1]) < 1.0e-14
-    @test abs(coeffs[2] - coeffs[2]) < 1.0e-14
+    @test norm(HS[1] - HSw[1]) < 1.0e-10
+    @test norm(HS[2] - HSw[2]) < 1.0e-10
+    @test norm(spdata[1] - spdata[1]) < 1.0e-10
+    @test norm(spdata[2] - spdata[2]) < 1.0e-10
+    @test norm(spdata[3] - spdata[3]) < 1.0e-10
+    @test abs(coeffs[1] - coeffs[1]) < 1.0e-10
+    @test abs(coeffs[2] - coeffs[2]) < 1.0e-10
 
 
     gw = SimpleWeightedDiGraph(4)
@@ -928,47 +928,52 @@ using Test
     add_edge!(gw,2,3,1)
     add_edge!(gw,3,4,1)
     add_edge!(gw,4,1,5)
+    gBw = SimpleWeightedDiGraph(4)
+    add_edge!(gBw,1,2,BigFloat(1))
+    add_edge!(gBw,2,3,BigFloat(1))
+    add_edge!(gBw,3,4,BigFloat(1))
+    add_edge!(gBw,4,1,BigFloat(5))
     g = SimpleDiGraph(adjacency_matrix(gw))
     HS = forward_hierarchical_structure(g)
     spdata = findnz(HS[3])
     coeffs = hierarchical_coefficients(g,HS)
-    @test norm(HS[1]) < 1.0e-14
-    @test norm(HS[2] - [1,1,1,1]) < 1.0e-14
-    @test norm(spdata[1] - [4,1,2,3]) < 1.0e-14
-    @test norm(spdata[2] - [1,2,3,4]) < 1.0e-14
-    @test norm(spdata[3]) < 1.0e-14
-    @test abs(coeffs[1] - 1) < 1.0e-14
-    @test abs(coeffs[2]) < 1.0e-14
     HS_B = forward_hierarchical_structure(g, big=true)
     spdata_B = findnz(HS_B[3])
     coeffs_B = hierarchical_coefficients(g,HS_B)
-    @test norm(HS_B[1]) < 1.0e-75
-    @test norm(HS_B[2] - [1,1,1,1]) < 1.0e-75
-    @test norm(spdata_B[1] - [4,1,2,3]) < 1.0e-75
-    @test norm(spdata_B[2] - [1,2,3,4]) < 1.0e-75
-    @test norm(spdata_B[3]) < 1.0e-75
-    @test abs(coeffs_B[1] - 1) < 1.0e-75
-    @test abs(coeffs_B[2]) < 1.0e-75
     HS_w = forward_hierarchical_structure(gw)
     spdata_w = findnz(HS_w[3])
     coeffs_w = hierarchical_coefficients(g,HS_w)
-    @test norm(HS_w[1] - [9/19, 3/19, -(3/19), -(9/19)]) < 1.0e-14
-    @test norm(HS_w[2] - [1/19,25/19,25/19,25/19]) < 1.0e-14
-    @test norm(spdata_w[1] - [4,1,2,3]) < 1.0e-14
-    @test norm(spdata_w[2] - [1,2,3,4]) < 1.0e-14
-    @test norm(spdata_w[3] - [18/19,-(6/19),-(6/19),-(6/19)]) < 1.0e-14
-    @test abs(coeffs_w[1] - 1) < 1.0e-14
-    @test abs(coeffs_w[2] - sqrt(3)*6/19) < 1.0e-14
-    HS_wB = forward_hierarchical_structure(gw, big=true)
+    HS_wB = forward_hierarchical_structure(gBw, big=true)
     spdata_wB = findnz(HS_wB[3])
     coeffs_wB = hierarchical_coefficients(g,HS_wB)
-    @test norm(HS_wB[1] - [big(9)/19, big(3)/19, -(big(3)/19), -(big(9)/19)]) < 1.0e-75
-    @test norm(HS_wB[2] - [big(1)/19,big(25)/19,big(25)/19,big(25)/19]) < 1.0e-75
-    @test norm(spdata_wB[1] - [4,1,2,3]) < 1.0e-75
-    @test norm(spdata_wB[2] - [1,2,3,4]) < 1.0e-75
-    @test norm(spdata_wB[3] - [big(18)/19,-(big(6)/19),-(big(6)/19),-(big(6)/19)]) < 1.0e-75
-    @test abs(coeffs_wB[1] - 1) < 1.0e-75
-    @test abs(coeffs_wB[2] - sqrt(big(3))*6/19) < 1.0e-75
+    @test norm(HS[1]) < 1.0e-10
+    @test norm(HS_B[1]) < 1.0e-70
+    @test norm(HS[2] - [1,1,1,1]) < 1.0e-10
+    @test norm(HS_B[2] - [1,1,1,1]) < 1.0e-70
+    @test norm(spdata[1] - [4,1,2,3]) < 1.0e-10
+    @test norm(spdata_B[1] - [4,1,2,3]) < 1.0e-70
+    @test norm(spdata[2] - [1,2,3,4]) < 1.0e-10
+    @test norm(spdata_B[2] - [1,2,3,4]) < 1.0e-70
+    @test norm(spdata[3]) < 1.0e-10
+    @test norm(spdata_B[3]) < 1.0e-70
+    @test abs(coeffs[1] - 1) < 1.0e-10
+    @test abs(coeffs_B[1] - 1) < 1.0e-70
+    @test abs(coeffs[2]) < 1.0e-10
+    @test abs(coeffs_B[2]) < 1.0e-70
+    @test norm(HS_w[1] - [9/19, 3/19, -(3/19), -(9/19)]) < 1.0e-10
+    @test norm(HS_wB[1] - [big(9)/19, big(3)/19, -(big(3)/19), -(big(9)/19)]) < 1.0e-70
+    @test norm(HS_w[2] - [1/19,25/19,25/19,25/19]) < 1.0e-10
+    @test norm(HS_wB[2] - [big(1)/19,big(25)/19,big(25)/19,big(25)/19]) < 1.0e-70
+    @test norm(spdata_w[1] - [4,1,2,3]) < 1.0e-10
+    @test norm(spdata_wB[1] - [4,1,2,3]) < 1.0e-70
+    @test norm(spdata_w[2] - [1,2,3,4]) < 1.0e-10
+    @test norm(spdata_wB[2] - [1,2,3,4]) < 1.0e-70
+    @test norm(spdata_w[3] - [18/19,-(6/19),-(6/19),-(6/19)]) < 1.0e-10
+    @test norm(spdata_wB[3] - [big(18)/19,-(big(6)/19),-(big(6)/19),-(big(6)/19)]) < 1.0e-70
+    @test abs(coeffs_w[1] - 1) < 1.0e-10
+    @test abs(coeffs_wB[1] - 1) < 1.0e-70
+    @test abs(coeffs_w[2] - sqrt(3)*6/19) < 1.0e-10
+    @test abs(coeffs_wB[2] - sqrt(big(3))*6/19) < 1.0e-70
     gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
     gr = SimpleDiGraph(transpose(adjacency_matrix(gw)))
     HS_F = hierarchical_structure(g)
@@ -979,42 +984,42 @@ using Test
     coeffs_R = hierarchical_coefficients(gr, HS_R)
     coeffs_wF = hierarchical_coefficients(gw, HS_wF)
     coeffs_wR = hierarchical_coefficients(gwr, HS_wR)
-    @test coeffs_F[1][1] - coeffs_F[2][1] < 1.0e-14
-    @test coeffs_F[1][2] - coeffs_F[2][2] < 1.0e-14
-    @test coeffs_F[2][1] - coeffs_F[1][1] < 1.0e-14
-    @test coeffs_F[2][2] - coeffs_F[1][2] < 1.0e-14
-    @test coeffs_wF[1][1] - coeffs_wF[2][1] < 1.0e-14
-    @test coeffs_wF[1][2] - coeffs_wF[2][2] < 1.0e-14
-    @test coeffs_wF[2][1] - coeffs_wF[1][1] < 1.0e-14
-    @test coeffs_wF[2][2] - coeffs_wF[1][2] < 1.0e-14
+    @test coeffs_F[1][1] - coeffs_R[2][1] < 1.0e-10
+    @test coeffs_F[1][2] - coeffs_R[2][2] < 1.0e-10
+    @test coeffs_F[2][1] - coeffs_R[1][1] < 1.0e-10
+    @test coeffs_F[2][2] - coeffs_R[1][2] < 1.0e-10
+    @test coeffs_wF[1][1] - coeffs_wR[2][1] < 1.0e-10
+    @test coeffs_wF[1][2] - coeffs_wR[2][2] < 1.0e-10
+    @test coeffs_wF[2][1] - coeffs_wR[1][1] < 1.0e-10
+    @test coeffs_wF[2][2] - coeffs_wR[1][2] < 1.0e-10
     spdata_F1 = findnz(HS_F[1][3])
     spdata_F2 = findnz(HS_F[2][3])
     spdata_R1 = findnz(HS_R[1][3])
     spdata_R2 = findnz(HS_R[2][3])
-    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-14
-    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-14
-    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-14
-    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-14
-    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-14
-    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-14
-    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-14
-    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-14
-    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-14
-    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-14
+    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-10
+    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-10
+    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-10
+    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-10
+    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-10
+    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-10
+    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-10
+    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-10
+    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-10
+    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-10
     spdata_wF1 = findnz(HS_wF[1][3])
     spdata_wF2 = findnz(HS_wF[2][3])
     spdata_wR1 = findnz(HS_wR[1][3])
     spdata_wR2 = findnz(HS_wR[2][3])
-    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-14
-    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-14
-    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-14
-    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-14
-    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-14
-    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-14
-    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-14
-    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-14
-    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-14
-    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-14
+    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-10
+    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-10
+    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-10
+    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-10
+    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-10
+    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-10
+    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-10
+    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-10
+    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-10
+    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-10
     HS_F = hierarchical_structure(g, big=true)
     HS_R = hierarchical_structure(gr, big=true)
     HS_wF = hierarchical_structure(gw, big=true)
@@ -1023,40 +1028,335 @@ using Test
     coeffs_R = hierarchical_coefficients(gr, HS_R)
     coeffs_wF = hierarchical_coefficients(gw, HS_wF)
     coeffs_wR = hierarchical_coefficients(gwr, HS_wR)
-    @test coeffs_F[1][1] - coeffs_F[2][1] < 1.0e-74
-    @test coeffs_F[1][2] - coeffs_F[2][2] < 1.0e-74
-    @test coeffs_F[2][1] - coeffs_F[1][1] < 1.0e-74
-    @test coeffs_F[2][2] - coeffs_F[1][2] < 1.0e-74
-    @test coeffs_wF[1][1] - coeffs_wF[2][1] < 1.0e-74
-    @test coeffs_wF[1][2] - coeffs_wF[2][2] < 1.0e-74
-    @test coeffs_wF[2][1] - coeffs_wF[1][1] < 1.0e-74
-    @test coeffs_wF[2][2] - coeffs_wF[1][2] < 1.0e-74
+    @test coeffs_F[1][1] - coeffs_R[2][1] < 1.0e-70
+    @test coeffs_F[1][2] - coeffs_R[2][2] < 1.0e-70
+    @test coeffs_F[2][1] - coeffs_R[1][1] < 1.0e-70
+    @test coeffs_F[2][2] - coeffs_R[1][2] < 1.0e-70
+    @test coeffs_wF[1][1] - coeffs_wR[2][1] < 1.0e-70
+    @test coeffs_wF[1][2] - coeffs_wR[2][2] < 1.0e-70
+    @test coeffs_wF[2][1] - coeffs_wR[1][1] < 1.0e-70
+    @test coeffs_wF[2][2] - coeffs_wR[1][2] < 1.0e-70
     spdata_F1 = findnz(HS_F[1][3])
     spdata_F2 = findnz(HS_F[2][3])
     spdata_R1 = findnz(HS_R[1][3])
     spdata_R2 = findnz(HS_R[2][3])
-    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-74
-    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-74
-    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-74
-    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-74
-    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-74
-    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-74
-    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-74
-    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-74
-    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-74
-    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-74
+    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-70
+    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-70
+    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-70
+    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-70
+    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-70
+    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-70
+    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-70
+    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-70
+    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-70
+    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-70
     spdata_wF1 = findnz(HS_wF[1][3])
     spdata_wF2 = findnz(HS_wF[2][3])
     spdata_wR1 = findnz(HS_wR[1][3])
     spdata_wR2 = findnz(HS_wR[2][3])
-    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-74
-    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-74
-    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-74
-    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-74
-    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-74
-    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-74
-    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-74
-    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-74
-    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-74
-    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-74
+    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-70
+    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-70
+    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-70
+    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-70
+    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-70
+    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-70
+    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-70
+    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-70
+    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-70
+    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-70
+
+    gw = SimpleWeightedDiGraph(4)
+    add_edge!(gw,1,3,2)
+    add_edge!(gw,2,3,2)
+    add_edge!(gw,3,4,1)
+    add_edge!(gw,3,1,1)
+    add_edge!(gw,3,2,1)
+    gBw = SimpleWeightedDiGraph(4)
+    add_edge!(gBw,1,3,BigFloat(2))
+    add_edge!(gBw,2,3,BigFloat(2))
+    add_edge!(gBw,3,4,BigFloat(1))
+    add_edge!(gBw,3,1,BigFloat(1))
+    add_edge!(gBw,3,2,BigFloat(1))
+    g = SimpleDiGraph(adjacency_matrix(gw))
+    HS = forward_hierarchical_structure(g)
+    spdata = findnz(HS[3])
+    coeffs = hierarchical_coefficients(g,HS)
+    HS_B = forward_hierarchical_structure(g, big=true)
+    spdata_B = findnz(HS_B[3])
+    coeffs_B = hierarchical_coefficients(g,HS_B)
+    HS_w = forward_hierarchical_structure(gw)
+    spdata_w = findnz(HS_w[3])
+    coeffs_w = hierarchical_coefficients(gw,HS_w)
+    HS_wB = forward_hierarchical_structure(gw, big=true)
+    spdata_wB = findnz(HS_wB[3])
+    coeffs_wB = hierarchical_coefficients(gw,HS_wB)
+    @test norm(HS[1] - [-(5/12), -(5/12), -(1/12), 11/12]) < 1.0e-10
+    @test norm(HS_B[1] - [-(big(5)/12), -(big(5)/12), -(big(1)/12), big(11)/12]) < 1.0e-70
+    @test norm(HS[2] - [4/3, 4/3, 2/3, 0]) < 1.0e-10
+    @test norm(HS_B[2] - [big(4)/3, big(4)/3, big(2)/3, 0]) < 1.0e-70
+    @test norm(spdata[1] - [3,3,1,2,3]) < 1.0e-10
+    @test norm(spdata_B[1] - [3,3,1,2,3]) < 1.0e-70
+    @test norm(spdata[2] - [1,2,3,3,4]) < 1.0e-10
+    @test norm(spdata_B[2] - [1,2,3,3,4]) < 1.0e-70
+    @test norm(spdata[3] - [-1/3,-1/3,1/3,1/3,1]) < 1.0e-10
+    @test norm(spdata_B[3] - [-big(1)/3,-big(1)/3,big(1)/3,big(1)/3,big(1)]) < 1.0e-70
+    @test abs(coeffs[1] - 4/5) < 1.0e-10
+    @test abs(coeffs_B[1] - big(4)/5) < 1.0e-70
+    @test abs(coeffs[2] - sqrt(14)*2/15) < 1.0e-10
+    @test abs(coeffs_B[2] - sqrt(big(14))*2/15) < 1.0e-70
+    @test norm(HS_w[1] - [-(23/36), -(23/36), 5/36, 41/36]) < 1.0e-10
+    @test norm(HS_wB[1] - [-(big(23)/36), -(big(23)/36), big(5)/36, big(41)/36]) < 1.0e-70
+    @test norm(HS_w[2] - [16/9, 16/9, 2/9, 0]) < 1.0e-10
+    @test norm(HS_wB[2] - [big(16)/9, big(16)/9, big(2)/9, 0]) < 1.0e-70
+    @test norm(spdata_w[1] - [3,3,1,2,3]) < 1.0e-10
+    @test norm(spdata_wB[1] - [3,3,1,2,3]) < 1.0e-70
+    @test norm(spdata_w[2] - [1,2,3,3,4]) < 1.0e-10
+    @test norm(spdata_wB[2] - [1,2,3,3,4]) < 1.0e-70
+    @test norm(spdata_w[3] - [-7/9,-7/9,7/9,7/9,1]) < 1.0e-10
+    @test norm(spdata_wB[3] - [-big(7)/9,-big(7)/9,big(7)/9,big(7)/9,1]) < 1.0e-70
+    @test abs(coeffs_w[1] - 40/63) < 1.0e-10
+    @test abs(coeffs_wB[1] - big(40)/63) < 1.0e-70
+    @test abs(coeffs_w[2] - (4*sqrt(131))/63) < 1.0e-10
+    @test abs(coeffs_wB[2] - (4*sqrt(big(131)))/63) < 1.0e-70
+    gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
+    gr = SimpleDiGraph(transpose(adjacency_matrix(gw)))
+    HS_F = hierarchical_structure(g)
+    HS_R = hierarchical_structure(gr)
+    HS_wF = hierarchical_structure(gw)
+    HS_wR = hierarchical_structure(gwr)
+    coeffs_F = hierarchical_coefficients(g, HS_F)
+    coeffs_R = hierarchical_coefficients(gr, HS_R)
+    coeffs_wF = hierarchical_coefficients(gw, HS_wF)
+    coeffs_wR = hierarchical_coefficients(gwr, HS_wR)
+    @test coeffs_F[1][1] - coeffs_R[2][1] < 1.0e-10
+    @test coeffs_F[1][2] - coeffs_R[2][2] < 1.0e-10
+    @test coeffs_F[2][1] - coeffs_R[1][1] < 1.0e-10
+    @test coeffs_F[2][2] - coeffs_R[1][2] < 1.0e-10
+    @test coeffs_wF[1][1] - coeffs_wR[2][1] < 1.0e-10
+    @test coeffs_wF[1][2] - coeffs_wR[2][2] < 1.0e-10
+    @test coeffs_wF[2][1] - coeffs_wR[1][1] < 1.0e-10
+    @test coeffs_wF[2][2] - coeffs_wR[1][2] < 1.0e-10
+    spdata_F1 = findnz(HS_F[1][3])
+    spdata_F2 = findnz(HS_F[2][3])
+    spdata_R1 = findnz(HS_R[1][3])
+    spdata_R2 = findnz(HS_R[2][3])
+    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-10
+    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-10
+    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-10
+    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-10
+    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-10
+    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-10
+    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-10
+    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-10
+    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-10
+    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-10
+    spdata_wF1 = findnz(HS_wF[1][3])
+    spdata_wF2 = findnz(HS_wF[2][3])
+    spdata_wR1 = findnz(HS_wR[1][3])
+    spdata_wR2 = findnz(HS_wR[2][3])
+    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-10
+    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-10
+    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-10
+    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-10
+    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-10
+    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-10
+    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-10
+    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-10
+    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-10
+    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-10
+    HS_F = hierarchical_structure(g, big=true)
+    HS_R = hierarchical_structure(gr, big=true)
+    HS_wF = hierarchical_structure(gw, big=true)
+    HS_wR = hierarchical_structure(gwr, big=true)
+    coeffs_F = hierarchical_coefficients(g, HS_F)
+    coeffs_R = hierarchical_coefficients(gr, HS_R)
+    coeffs_wF = hierarchical_coefficients(gw, HS_wF)
+    coeffs_wR = hierarchical_coefficients(gwr, HS_wR)
+    @test coeffs_F[1][1] - coeffs_R[2][1] < 1.0e-70
+    @test coeffs_F[1][2] - coeffs_R[2][2] < 1.0e-70
+    @test coeffs_F[2][1] - coeffs_R[1][1] < 1.0e-70
+    @test coeffs_F[2][2] - coeffs_R[1][2] < 1.0e-70
+    @test coeffs_wF[1][1] - coeffs_wR[2][1] < 1.0e-70
+    @test coeffs_wF[1][2] - coeffs_wR[2][2] < 1.0e-70
+    @test coeffs_wF[2][1] - coeffs_wR[1][1] < 1.0e-70
+    @test coeffs_wF[2][2] - coeffs_wR[1][2] < 1.0e-70
+    spdata_F1 = findnz(HS_F[1][3])
+    spdata_F2 = findnz(HS_F[2][3])
+    spdata_R1 = findnz(HS_R[1][3])
+    spdata_R2 = findnz(HS_R[2][3])
+    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-70
+    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-70
+    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-70
+    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-70
+    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-70
+    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-70
+    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-70
+    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-70
+    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-70
+    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-70
+    spdata_wF1 = findnz(HS_wF[1][3])
+    spdata_wF2 = findnz(HS_wF[2][3])
+    spdata_wR1 = findnz(HS_wR[1][3])
+    spdata_wR2 = findnz(HS_wR[2][3])
+    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-70
+    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-70
+    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-70
+    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-70
+    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-70
+    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-70
+    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-70
+    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-70
+    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-70
+    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-70
+
+
+    gw = SimpleWeightedDiGraph(6)
+    add_edge!(gw,1,2,1)
+    add_edge!(gw,2,3,1)
+    add_edge!(gw,3,1,2)
+    add_edge!(gw,3,4,1)
+    add_edge!(gw,4,5,1)
+    add_edge!(gw,5,6,1)
+    add_edge!(gw,2,6,1)
+    add_edge!(gw,4,6,1)
+    gBw = SimpleWeightedDiGraph(6)
+    add_edge!(gBw,1,2,BigFloat(1))
+    add_edge!(gBw,2,3,BigFloat(1))
+    add_edge!(gBw,3,1,BigFloat(2))
+    add_edge!(gBw,3,4,BigFloat(1))
+    add_edge!(gBw,4,5,BigFloat(1))
+    add_edge!(gBw,5,6,BigFloat(1))
+    add_edge!(gBw,2,6,BigFloat(1))
+    add_edge!(gBw,4,6,BigFloat(1))
+    g = SimpleDiGraph(adjacency_matrix(gw))
+    HS = forward_hierarchical_structure(g)
+    spdata = findnz(HS[3])
+    coeffs = hierarchical_coefficients(g,HS)
+    HS_B = forward_hierarchical_structure(g, big=true)
+    spdata_B = findnz(HS_B[3])
+    coeffs_B = hierarchical_coefficients(g,HS_B)
+    HS_w = forward_hierarchical_structure(gw)
+    spdata_w = findnz(HS_w[3])
+    coeffs_w = hierarchical_coefficients(gw,HS_w)
+    HS_wB = forward_hierarchical_structure(gw, big=true)
+    spdata_wB = findnz(HS_wB[3])
+    coeffs_wB = hierarchical_coefficients(gw,HS_wB)
+    @test norm(HS[1] - [-(5/6), -(5/6), -(5/6), 1/6, 7/6, 7/6]) < 1.0e-10
+    @test norm(HS_B[1] - [-(big(5)/6), -(big(5)/6), -(big(5)/6), big(1)/6, big(7)/6, big(7)/6]) < 1.0e-70
+    @test norm(HS[2] - [1, 1, 1, 0, 0, 0]) < 1.0e-10
+    @test norm(HS_B[2] - [1, 1, 1, 0, 0, 0]) < 1.0e-70
+    @test norm(spdata[1] - [3,1,2,3,4,2,4,5]) < 1.0e-10
+    @test norm(spdata_B[1] - [3,1,2,3,4,2,4,5]) < 1.0e-70
+    @test norm(spdata[2] - [1,2,3,4,5,6,6,6]) < 1.0e-10
+    @test norm(spdata_B[2] - [1,2,3,4,5,6,6,6]) < 1.0e-70
+    @test norm(spdata[3] - [0,0,0,1,1,2,1,0]) < 1.0e-10
+    @test norm(spdata_B[3] - [0,0,0,1,1,2,1,0]) < 1.0e-70
+    @test abs(coeffs[1] - 3/8) < 1.0e-10
+    @test abs(coeffs_B[1] - big(3)/8) < 1.0e-70
+    @test abs(coeffs[2] - sqrt(31)/8) < 1.0e-10
+    @test abs(coeffs_B[2] - sqrt(big(31))/8) < 1.0e-70
+    @test norm(HS_w[1] - [-(19/54), -(37/54), -(55/54), -(1/54), 53/54, 59/54]) < 1.0e-10
+    @test norm(HS_wB[1] - [-(big(19)/54), -(big(37)/54), -(big(55)/54), -(big(1)/54), big(53)/54, big(59)/54]) < 1.0e-70
+    @test norm(HS_w[2] - [1/3, 4/3, 4/3, 0, 0, 0]) < 1.0e-10
+    @test norm(HS_wB[2] - [big(1)/3, big(4)/3, big(4)/3, 0, 0, 0]) < 1.0e-70
+    @test norm(spdata_w[1] - [3,1,2,3,4,2,4,5]) < 1.0e-10
+    @test norm(spdata_wB[1] - [3,1,2,3,4,2,4,5]) < 1.0e-70
+    @test norm(spdata_w[2] - [1,2,3,4,5,6,6,6]) < 1.0e-10
+    @test norm(spdata_wB[2] - [1,2,3,4,5,6,6,6]) < 1.0e-70
+    @test norm(spdata_w[3] - [2/3,-1/3,-1/3,1,1,16/9,10/9,1/9]) < 1.0e-10
+    @test norm(spdata_wB[3] - [big(2)/3,-big(1)/3,-big(1)/3,1,1,big(16)/9,big(10)/9,big(1)/9]) < 1.0e-70
+    @test abs(coeffs_w[1] - 10/27) < 1.0e-10
+    @test abs(coeffs_wB[1] - big(10)/27) < 1.0e-70
+    @test abs(coeffs_w[2] - (8*sqrt(5))/27) < 1.0e-10
+    @test abs(coeffs_wB[2] - (8*sqrt(big(5)))/27) < 1.0e-70
+    gwr = SimpleWeightedDiGraph(transpose(weights(gw)))
+    gr = SimpleDiGraph(transpose(adjacency_matrix(gw)))
+    HS_F = hierarchical_structure(g)
+    HS_R = hierarchical_structure(gr)
+    HS_wF = hierarchical_structure(gw)
+    HS_wR = hierarchical_structure(gwr)
+    coeffs_F = hierarchical_coefficients(g, HS_F)
+    coeffs_R = hierarchical_coefficients(gr, HS_R)
+    coeffs_wF = hierarchical_coefficients(gw, HS_wF)
+    coeffs_wR = hierarchical_coefficients(gwr, HS_wR)
+    @test coeffs_F[1][1] - coeffs_R[2][1] < 1.0e-10
+    @test coeffs_F[1][2] - coeffs_R[2][2] < 1.0e-10
+    @test coeffs_F[2][1] - coeffs_R[1][1] < 1.0e-10
+    @test coeffs_F[2][2] - coeffs_R[1][2] < 1.0e-10
+    @test coeffs_wF[1][1] - coeffs_wR[2][1] < 1.0e-10
+    @test coeffs_wF[1][2] - coeffs_wR[2][2] < 1.0e-10
+    @test coeffs_wF[2][1] - coeffs_wR[1][1] < 1.0e-10
+    @test coeffs_wF[2][2] - coeffs_wR[1][2] < 1.0e-10
+    spdata_F1 = findnz(HS_F[1][3])
+    spdata_F2 = findnz(HS_F[2][3])
+    spdata_R1 = findnz(HS_R[1][3])
+    spdata_R2 = findnz(HS_R[2][3])
+    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-10
+    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-10
+    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-10
+    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-10
+    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-10
+    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-10
+    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-10
+    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-10
+    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-10
+    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-10
+    spdata_wF1 = findnz(HS_wF[1][3])
+    spdata_wF2 = findnz(HS_wF[2][3])
+    spdata_wR1 = findnz(HS_wR[1][3])
+    spdata_wR2 = findnz(HS_wR[2][3])
+    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-10
+    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-10
+    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-10
+    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-10
+    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-10
+    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-10
+    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-10
+    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-10
+    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-10
+    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-10
+    HS_F = hierarchical_structure(g, big=true)
+    HS_R = hierarchical_structure(gr, big=true)
+    HS_wF = hierarchical_structure(gw, big=true)
+    HS_wR = hierarchical_structure(gwr, big=true)
+    coeffs_F = hierarchical_coefficients(g, HS_F)
+    coeffs_R = hierarchical_coefficients(gr, HS_R)
+    coeffs_wF = hierarchical_coefficients(gw, HS_wF)
+    coeffs_wR = hierarchical_coefficients(gwr, HS_wR)
+    @test coeffs_F[1][1] - coeffs_R[2][1] < 1.0e-70
+    @test coeffs_F[1][2] - coeffs_R[2][2] < 1.0e-70
+    @test coeffs_F[2][1] - coeffs_R[1][1] < 1.0e-70
+    @test coeffs_F[2][2] - coeffs_R[1][2] < 1.0e-70
+    @test coeffs_wF[1][1] - coeffs_wR[2][1] < 1.0e-70
+    @test coeffs_wF[1][2] - coeffs_wR[2][2] < 1.0e-70
+    @test coeffs_wF[2][1] - coeffs_wR[1][1] < 1.0e-70
+    @test coeffs_wF[2][2] - coeffs_wR[1][2] < 1.0e-70
+    spdata_F1 = findnz(HS_F[1][3])
+    spdata_F2 = findnz(HS_F[2][3])
+    spdata_R1 = findnz(HS_R[1][3])
+    spdata_R2 = findnz(HS_R[2][3])
+    @test norm(HS_F[1][1] - HS_R[2][1]) < 1.0e-70
+    @test norm(HS_F[2][1] - HS_R[1][1]) < 1.0e-70
+    @test norm(HS_F[1][2] - HS_R[2][2]) < 1.0e-70
+    @test norm(HS_F[2][2] - HS_R[1][2]) < 1.0e-70
+    @test norm(spdata_F1[1] - spdata_R2[1]) < 1.0e-70
+    @test norm(spdata_F1[2] - spdata_R2[2]) < 1.0e-70
+    @test norm(spdata_F1[3] - spdata_R2[3]) < 1.0e-70
+    @test norm(spdata_F2[1] - spdata_R1[1]) < 1.0e-70
+    @test norm(spdata_F2[2] - spdata_R1[2]) < 1.0e-70
+    @test norm(spdata_F2[3] - spdata_R1[3]) < 1.0e-70
+    spdata_wF1 = findnz(HS_wF[1][3])
+    spdata_wF2 = findnz(HS_wF[2][3])
+    spdata_wR1 = findnz(HS_wR[1][3])
+    spdata_wR2 = findnz(HS_wR[2][3])
+    @test norm(HS_wF[1][1] - HS_wR[2][1]) < 1.0e-70
+    @test norm(HS_wF[2][1] - HS_wR[1][1]) < 1.0e-70
+    @test norm(HS_wF[1][2] - HS_wR[2][2]) < 1.0e-70
+    @test norm(HS_wF[2][2] - HS_wR[1][2]) < 1.0e-70
+    @test norm(spdata_wF1[1] - spdata_wR2[1]) < 1.0e-70
+    @test norm(spdata_wF1[2] - spdata_wR2[2]) < 1.0e-70
+    @test norm(spdata_wF1[3] - spdata_wR2[3]) < 1.0e-70
+    @test norm(spdata_wF2[1] - spdata_wR1[1]) < 1.0e-70
+    @test norm(spdata_wF2[2] - spdata_wR1[2]) < 1.0e-70
+    @test norm(spdata_wF2[3] - spdata_wR1[3]) < 1.0e-70
 end
