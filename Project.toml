@@ -1,7 +1,7 @@
 name = "GraphHierarchy"
 uuid = "eeea4c8d-ca31-4090-a523-ad0f39bfce72"
 authors = ["Giannis Moutsinas"]
-version = "0.1.12"
+version = "0.2.0"
 
 [deps]
 IterativeSolvers = "42fd0dbc-a981-5370-80f2-aaf504508153"
