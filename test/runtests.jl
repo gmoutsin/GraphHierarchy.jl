@@ -329,3 +329,59 @@ using Test
     @test abs(HC[1] - 550//6231) < 1.0e-16
     @test abs(HC[2] - sqrt(big(13557755))/6231) < 1.0e-16
 end
+
+
+
+using StatsBase
+using Statistics
+
+setprecision(2048)
+
+nn = 498
+
+es = [ (0,0) for i in 1:nn^2 ]
+
+for i in 1:nn
+    for j in 1:nn
+        es[(i-1)*nn + j] = (i,j)
+    end
+end
+
+ces = sample(es, 2500-4, replace = false)
+
+g = SimpleDiGraph(500)
+
+for e in ces
+    add_edge!(g, e[1], e[2])
+end
+
+HS = hierarchical_structure(g, big = true)
+
+HC = hierarchical_coefficients(g, HS)
+
+HC[1][1]
+HC[2][1]
+
+sort(HS[2][2])
+
+add_edge!(g, 500, 499)
+add_edge!(g, 500, 1)
+add_edge!(g, 499, 500)
+add_edge!(g, 499, 2)
+
+HS = hierarchical_structure(g, big = true)
+
+HC = hierarchical_coefficients(g, HS)
+
+
+HC[1][1]
+HC[2][1]
+
+
+io = open("edges.csv", "w")
+
+for e in ces
+    println(io, string(e[1])*","*string(e[2]))
+end
+
+close(io)
